@@ -1,13 +1,37 @@
-nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+li {
+    list-style: none;
+    padding: 10px;
+    margin: 0 20px;
+    font-size: 20px;
+
 }
 
-ul{
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+.nav-link {
+    color: #ffffffcb;
+}
+
+
+.nav-link:hover, .navbar-brand:hover {
+    color: #3355ff;
+    transition: 0.3s;
+}
+
+.navbar-toggler-icon {
+    background-image: url('/public/menu.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+
+.iconos {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: .25rem;
+}
+
+.nav-item {
+    margin: 0rem;
 }

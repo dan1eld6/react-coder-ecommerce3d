@@ -1,0 +1,40 @@
+.p-impresora {
+    color: #000000;
+    font-size: 1.1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px 0px 15px 0px;
+}
+
+.carousel-item {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.impresora {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+
+.carousel-inner {
+    height: 400px;
+
+    /* object-fit: contain; */
+}
+
+.precio {
+    font-size: 1.3rem;
+    color: #000000;
+}
