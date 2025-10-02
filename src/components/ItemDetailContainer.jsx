@@ -10,11 +10,18 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true);
-        getPrinterById(id).then((data) => {
-            setPrinter(data);
-            setLoading(false);
-        });
-    }, [id]);
+        getPrinterById(id)
+            .then((data) => {
+                setPrinter(data);
+            })
+            .catch((err) => {
+                console.error(err);
+                setPrinter(null)
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [id])
 
     if (loading) return <h2 className="text-center my-5">Cargando...</h2>;
 

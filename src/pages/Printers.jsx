@@ -4,25 +4,37 @@ import "./Printers.css";
 import Card from "../components/Card";
 import { getPrinters, getPrintersByCategory } from "../data/mockAPI";
 
+
 const Printers = () => {
-    const { categoryId } = useParams(); 
+    const { categoryId } = useParams();
     const [printers, setPrinters] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
 
     useEffect(() => {
         setLoading(true);
+        setError("");
 
-        const fetchData = categoryId
-            ? getPrintersByCategory(categoryId)
-            : getPrinters();
+        const fetchData = categoryId ? getPrintersByCategory(categoryId) : getPrinters();
 
-        fetchData.then((data) => {
-            setPrinters(data);
-            setLoading(false);
-        });
+        fetchData
+            .then((data) => {
+                setPrinters(data);
+            })
+            .catch((err) => {
+                console.error("Error cargando impresoras:", err);
+                setError("Hubo un problema al cargar las impresoras.");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, [categoryId]);
 
     if (loading) return <h2 className="text-center my-5">Cargando...</h2>;
+    if (error) return <h2 className="text-center my-5 text-danger">{error}</h2>;
+    if (printers.length === 0) return <h2 className="text-center my-5">No hay productos en esta categoría</h2>;
+
 
     return (
         <div className="container my-5">
@@ -43,11 +55,13 @@ const Printers = () => {
             </div>
 
             <div className="row">
-                {printers.map((printer) => (
-                    <Card key={printer.id} {...printer} />
-                ))}
-            </div>
+                <div className="row">
+                    {printers.map((printer) => (
+                        <Card key={printer.id} {...printer} />
+                    ))}
+                </div>
 
+            </div>
         </div>
     );
 };

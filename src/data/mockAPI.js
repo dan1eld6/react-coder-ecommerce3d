@@ -2,9 +2,15 @@ import printers from '../data/printersdb'
 // import filaments from '../data/filamentsdb'
 
 export const getPrinters = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => { resolve(printers) }, 500)
-    })
+    return new Promise((resolve, reject) => {
+        try {
+            setTimeout(() => {
+                resolve(printers);
+            }, 500);
+        } catch (error) {
+            reject("Error al obtener las impresoras");
+        }
+    });
 }
 
 // export const getFilaments = () => {
@@ -14,11 +20,18 @@ export const getPrinters = () => {
 // }
 
 export const getPrintersByCategory = (categoryId) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(printers.filter(printer => printer.category === categoryId))
-        }, 500)
-    })
+    return new Promise((resolve, reject) => {
+        try {
+            setTimeout(() => {
+                const filtered = printers.filter(
+                    (p) => p.category === categoryId
+                );
+                resolve(filtered);
+            }, 500);
+        } catch (error) {
+            reject("Error al filtrar por categoría");
+        }
+    });
 }
 
 // export const getFilamentsByCategory = (categoryId) => {
@@ -31,9 +44,18 @@ export const getPrintersByCategory = (categoryId) => {
 
 
 export const getPrinterById = (id) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(printers.find(printer => printer.id === parseInt(id)))
-        }, 500)
-    })
+    return new Promise((resolve, reject) => {
+        try {
+            setTimeout(() => {
+                const printer = printers.find((p) => String(p.id) === String(id));
+                if (printer) {
+                    resolve(printer);
+                } else {
+                    reject(`No se encontró la impresora con id ${id}`);
+                }
+            }, 500);
+        } catch (error) {
+            reject("Error al buscar la impresora");
+        }
+    });
 }

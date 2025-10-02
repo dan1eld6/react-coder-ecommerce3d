@@ -9,24 +9,24 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 
 function App() {
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
         <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/servicios' element={<Servicios />} />
-          {/* Listado y filtros */}
-          <Route path='/impresoras/:categoryId?' element={<Printers />} />
-          {/* Detalle de producto */}
-          <Route path='/impresora/:id' element={<ItemDetailContainer />} />
-          <Route path='/insumos' element={""} />
-          <Route path='/carrito' element={""} />
-          <Route path='*' element={<h1>Error 404: Página no encontrada</h1>} />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/servicios' element={<Servicios />} />
+            <Route path='/impresoras/:categoryId?' element={<Printers />} />
+            <Route path='/impresora/:id' element={<ItemDetailContainer />} />
+            <Route path='/insumos' element={""} />
+            <Route path='/carrito' element={""} />
+            <Route path='*' element={<h1>Error 404: Página no encontrada</h1>} />
+          </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App

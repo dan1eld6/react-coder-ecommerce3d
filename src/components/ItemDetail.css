@@ -1,0 +1,10 @@
+.info{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h4{
+    text-align: center;
+    color: aliceblue;
+}
