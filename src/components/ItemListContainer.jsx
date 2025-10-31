@@ -1,4 +1,4 @@
-import { getPrinters } from "../data/mockAPI";
+import { getPrinters } from "../data/firebase";
 import { getFilaments } from "../data/mockAPI";
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";

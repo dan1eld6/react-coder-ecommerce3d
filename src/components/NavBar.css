@@ -17,7 +17,7 @@ li {
 }
 
 .navbar-toggler-icon {
-    background-image: url('/public/menu.png');
+    background-image: url('/menu.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 30px;
@@ -34,4 +34,9 @@ li {
 
 .nav-item {
     margin: 0rem;
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
 }

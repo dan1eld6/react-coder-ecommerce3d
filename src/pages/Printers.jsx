@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Printers.css";
 import Card from "../components/Card";
-import { getPrinters, getPrintersByCategory } from "../data/mockAPI";
+import { getPrinters,getPrintersByCategory ,uploadInitialData} from "../data/firebase";
 
 
 const Printers = () => {
@@ -10,6 +10,10 @@ const Printers = () => {
     const [printers, setPrinters] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+
+
+
 
 
     useEffect(() => {
@@ -37,7 +41,16 @@ const Printers = () => {
 
 
     return (
+
+        
+
+
         <div className="container my-5">
+
+        <button onClick={uploadInitialData} className="btn btn-secondary mb-4">
+            cargar base de datos
+        </button>
+
             {/*  Filtros de categorías */}
             <div className="mb-4 d-flex gap-2 justify-content-center">
                 <Link to="/impresoras" className="btn btn-outline-light">

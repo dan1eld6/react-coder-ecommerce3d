@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import CartWidget from "./CartWidget";
 
 export default function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                 <Link className="navbar-brand" to="/">
-                    <img src="./3dworld.png" className="iconos" alt="logo" />3DWORLD
+                    <img src="/3dworld.png" className="iconos" alt="logo" />3DWORLD
                 </Link>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -34,8 +35,11 @@ export default function NavBar() {
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/carrito">
-                                <img src="/shopping-cart.png" className="iconos" alt="carrito" />Carrito
+                            <Link className="nav-link cart-icon" to="/carrito">
+                                <img src="/shopping-cart.png" className="iconos" alt="carrito" />
+                                Carrito 
+                                <CartWidget />
+                                
                             </Link>
                         </li>
 

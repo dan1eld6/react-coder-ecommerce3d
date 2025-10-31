@@ -1,6 +1,6 @@
 const printers=[
     {
-        "id": 1,
+        
         "title": "ELEGOO Impresora 3D Neptune 3 Pro",
         "img": [
             "/printers/impresora1a.webp",
@@ -12,7 +12,7 @@ const printers=[
         "stock": 10
     },
     {
-        "id": 2,
+        
         "title": "Creality Ender-3 V3 SE",
         "img": [
             "/printers/impresora2a.webp",
@@ -24,7 +24,7 @@ const printers=[
         "stock": 8
     },
     {
-        "id": 3,
+        
         "title": "Bambu Lab A1 Mini",
         "img": [
             "/printers/impresora3a.webp",
@@ -36,7 +36,7 @@ const printers=[
         "stock": 5
     },
     {
-        "id": 4,
+        
         "title": "Creality Ender 3 S1",
         "img": [
             "/printers/impresora4a.webp",
@@ -48,7 +48,7 @@ const printers=[
         "stock": 6
     },
     {
-        "id": 5,
+        
         "title": "Creality Ender 3 V3",
         "img": [
             "/printers/impresora5a.webp",
@@ -60,7 +60,7 @@ const printers=[
         "stock": 4
     },
     {
-        "id": 6,
+        
         "title": "Artisan - Impresora 3D",
         "img": [
             "/printers/impresora6a.webp",
@@ -72,7 +72,7 @@ const printers=[
         "stock": 2
     },
     {
-        "id": 7,
+        
         "title": "Creality Ender 3 V2",
         "img": [
             "/printers/impresora7a.webp",
@@ -84,7 +84,7 @@ const printers=[
         "stock": 12
     },
     {
-        "id": 8,
+        
         "title": "ZONESTAR Z8PM4 PRO",
         "img": [
             "/printers/impresora8a.webp",
@@ -96,7 +96,7 @@ const printers=[
         "stock": 3
     },
     {
-        "id": 9,
+        
         "title": "Ender 3 V3 KE",
         "img": [
             "/printers/impresora9a.webp",

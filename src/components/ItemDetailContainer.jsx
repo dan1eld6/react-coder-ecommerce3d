@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPrinterById } from "../data/mockAPI";
+import { getPrintersById } from "../data/firebase";
 import ItemDetail from "./ItemDetail";
+import { useContext } from "react"
+import {cartContext} from "../context/cartContext"
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [printer, setPrinter] = useState(null);
     const [loading, setLoading] = useState(true);
+    // const {addToCart} = useContext(cartContext)
 
     useEffect(() => {
         setLoading(true);
-        getPrinterById(id)
+        getPrintersById(id)
             .then((data) => {
                 setPrinter(data);
             })
