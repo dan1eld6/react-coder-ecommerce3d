@@ -1,0 +1,20 @@
+.order-detail .card {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: #fdfdfd;
+}
+
+.order-detail ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-detail li {
+    margin-bottom: 8px;
+}
+
+.det-txt {
+    color: #333;
+    font-size: 16px;
+}

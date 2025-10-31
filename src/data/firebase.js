@@ -6,12 +6,12 @@ import printers from "./printersdb";
 
 // Configuración de Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyBLmlXdKxKsHZnQEv3LzyM8qSya0ZiENa0",
-    authDomain: "d-world-9ada9.firebaseapp.com",
-    projectId: "d-world-9ada9",
-    storageBucket: "d-world-9ada9.firebasestorage.app",
+    apiKey: import.meta.env.VITE_FIRESTORE_API_KEY,
+    authDomain: import.meta.env.VITE_FIRESTORE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIRESTORE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIRESTORE_STORAGE_BUCKET,
     messagingSenderId: "271117111099",
-    appId: "1:271117111099:web:774fea3db7863b212eb11e",
+    appId: import.meta.env.VITE_FIRESTORE_APP_ID
 };
 
 // Inicializar Firebase y Firestore

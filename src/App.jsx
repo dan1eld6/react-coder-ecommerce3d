@@ -9,6 +9,7 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 import { CartProvider } from './context/cartContext'
 import Cart from './pages/Cart'
 import {getPrinters} from './data/firebase'
+import OrderDetail from './components/OrderDetail'
 
 function App() {
   console.log("Firebase app initialized:", getPrinters());
@@ -28,6 +29,7 @@ function App() {
               <Route path='/insumos' element={""} />
               <Route path='/carrito' element={<Cart/>} />
               <Route path='*' element={<h1>Error 404: Página no encontrada</h1>} />
+              <Route path="/order/:orderId" element={<OrderDetail />} />
             </Routes>
           </div>
           <Footer />

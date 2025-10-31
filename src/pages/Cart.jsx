@@ -1,30 +1,42 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { cartContext } from "../context/cartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Cart.css";
 import { createOrder } from "../data/firebase";
+import FormCheckout from "../components/FormCheckout";
 
 export default function Cart() {
-    const { cartItems, removeItem, cartTotalPrice, clearCart, increaseQuantity, decreaseQuantity } =
-        useContext(cartContext);
+    const {
+        cartItems,
+        removeItem,
+        cartTotalPrice,
+        clearCart,
+        increaseQuantity,
+        decreaseQuantity,
+    } = useContext(cartContext);
 
+    const [showForm, setShowForm] = useState(false);
+    const navigate = useNavigate();
 
-    // {buyer,cartitrems,total,date}
-    function handleCheckout() {
-        const buyer = {
-            name: "Juan Perez",
-            email: "juan@hotmail.com",
-            phone: "1234567890"
+    async function handleCheckout(buyerData) {
+        try {
+            const total = cartTotalPrice();
+            const date = new Date();
+
+            const orderId = await createOrder({
+                buyer: buyerData,
+                cartItems,
+                total,
+                date,
+            });
+
+            clearCart();
+            navigate(`/order/${orderId}`);
+        } catch (error) {
+            console.error("Error al crear la orden:", error);
+            alert("Hubo un error al procesar la compra.");
         }
-        const total = cartTotalPrice()
-        const date = new Date()
-
-        const newOrder = createOrder({buyer, cartItems, total, date})
-        alert("Gracias por su compra! Su número de orden es: " + newOrder)
-        clearCart()
     }
-
-
 
     if (cartItems.length === 0) {
         return (
@@ -42,7 +54,7 @@ export default function Cart() {
             <h2 className="text-center mb-4">Carrito de Compras</h2>
 
             <div className="cart-list">
-                {cartItems.map(item => (
+                {cartItems.map((item) => (
                     <div className="card mb-3 shadow-sm cart-item" key={item.id}>
                         <div className="row g-0 align-items-center item-card">
                             <div className="col-12 col-md-3 text-center">
@@ -52,6 +64,7 @@ export default function Cart() {
                                     className="img-fluid rounded cart-item-img"
                                 />
                             </div>
+
                             <div className="col-12 col-md-6 cart-item-details">
                                 <h5 className="mb-2">{item.title}</h5>
                                 <p className="mb-1 det-info">Precio unitario: ${item.price}</p>
@@ -73,7 +86,6 @@ export default function Cart() {
                                     </button>
                                 </div>
 
-                                
                                 <p className="fw-bold text-success price-total">
                                     Total: ${(item.quantity * item.price).toFixed(2)}
                                 </p>
@@ -94,17 +106,25 @@ export default function Cart() {
 
             <div className="cart-summary text-center mt-4">
                 <h4>Total de la compra: ${cartTotalPrice().toFixed(2)}</h4>
+
                 <div className="d-flex flex-column flex-md-row justify-content-center gap-3 mt-3">
                     <button className="btn btn-outline-secondary" onClick={clearCart}>
                         Vaciar Carrito
                     </button>
-                    <button onClick={handleCheckout} className="btn btn-primary">
-                        Confirmar compra
+
+                    <button
+                        onClick={() => setShowForm(!showForm)}
+                        className="btn btn-primary"
+                    >
+                        {showForm ? "Cancelar" : "Confirmar compra"}
                     </button>
-                    <Link to="/checkout" className="btn btn-success">
-                        Finalizar compra
-                    </Link>
                 </div>
+
+                {showForm && (
+                    <div className="mt-4">
+                        <FormCheckout onSubmit={handleCheckout} />
+                    </div>
+                )}
             </div>
         </div>
     );
