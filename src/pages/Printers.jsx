@@ -47,9 +47,9 @@ const Printers = () => {
 
         <div className="container my-5">
 
-        <button onClick={uploadInitialData} className="btn btn-secondary mb-4">
+        {/* <button onClick={uploadInitialData} className="btn btn-secondary mb-4">
             cargar base de datos
-        </button>
+        </button> */}
 
             {/*  Filtros de categorías */}
             <div className="mb-4 d-flex gap-2 justify-content-center">

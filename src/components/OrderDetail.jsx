@@ -52,7 +52,7 @@ export default function OrderDetail() {
                 <p className="det-txt"><strong>Fecha:</strong> {new Date(order.date.seconds * 1000).toLocaleString()}</p>
                 <hr />
                 <h5 className="det-txt">Datos del comprador:</h5>
-                <p className="det-txt"><strong>Nombre:</strong> {order.buyer.name}</p>
+                <p className="det-txt"><strong>Nombre:</strong> {order.buyer.username}</p>
                 <p className="det-txt"><strong>Email:</strong> {order.buyer.email}</p>
                 <p className="det-txt"><strong>Teléfono:</strong> {order.buyer.phone}</p>
                 <hr />
